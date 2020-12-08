@@ -14,7 +14,7 @@ typedef boost::beast::http::request<request_body_t, boost::beast::http::basic_fi
 class Router {
     
     public:
-        Router() {}
+        Router() : Empty_{""}, Error_{"-1"} {}
         
         /**
          * Purpose: Process the Get request.  
@@ -32,7 +32,8 @@ class Router {
 
     
     private:
-        std::vector<std::string> routes_;
+        std::string Empty_;
+        std::string Error_;
 };
 
 
