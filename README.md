@@ -60,6 +60,7 @@ Do not forget to include the path to your Boost directory.
 Usage: IP PORT ROOTDIR WORKERS spin|block
 
 ./Server 0.0.0.0 3000 . 100 block
+
 Use curl to perform a get request.
 
 curl localhost:3000
