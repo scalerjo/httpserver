@@ -63,5 +63,7 @@ Usage: IP PORT ROOTDIR WORKERS spin|block
 Use curl to perform a get request.
 
 curl localhost:3000
+
+Use the included build scripts to deploy the working example
 # Warning
 Refer to the License agreement before distributing or using
