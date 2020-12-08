@@ -54,6 +54,7 @@ int main(int argc, char *argv[])
 ```
 ## 4. Use this to build.
 g++ Server.cpp -o Server -lboost_thread -lpthread
+
 Do not forget to include the path to your Boost directory.
 
 ## 5. Run the server.
