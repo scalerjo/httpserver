@@ -1,5 +1,5 @@
-#include "HttpServerBuilder.h"
-#include "Router.cpp"
+#include "../HttpServerBuilder.h"
+#include "ExampleRouter.cpp"
 
 int main(int argc, char *argv[])
 {
