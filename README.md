@@ -14,7 +14,7 @@ Download Boost library here: https://www.boost.org/users/download/
 ```cpp
 #include "Router.h"
 
-std::string& Router::Get(const HttpRequest& Request){
+std::string& Router::Get(const HttpRequest& Request, std::stack<std::string>& CookieStack){
     //Return a Path to a local html file. Return an empty string for invalid URL.
 }
 
