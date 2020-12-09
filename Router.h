@@ -5,6 +5,7 @@
 #include <boost/beast/http.hpp>
 #include <string>
 #include "FieldsAlloc.h"
+#include <stack>
 
 constexpr int Mbyte = 1024 * 1024;
 using alloc_t = fields_alloc<char>;
@@ -21,7 +22,7 @@ class Router {
          * @param   Request HttpRequest
          * @returns URL     string
          */
-        std::string& Get(const HttpRequest& Request);
+        std::string& Get(const HttpRequest& Request, std::stack<std::string>& CookieStack);
 
         /**
          * Purpose: Process the Post request.  

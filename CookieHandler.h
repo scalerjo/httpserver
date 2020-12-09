@@ -12,13 +12,13 @@ const std::string CookieFlags = "; Path=/; Secure=true; HttpOnly=true; SameSite=
  * @param value string
  * @returns     string
  */
-std::string MakeTestCookie(const std::string& name, const std::string& value){
+std::string MakeTestCookie(const std::string& value){
     char buf[1000];
     size_t min = 15;
     time_t now = time(0) + (60 * min);
     struct tm tm = *gmtime(&now);
     strftime(buf, sizeof buf, "%a, %d %b %Y %H:%M:%S %Z", &tm);
-    return name + "=" + value + "; Expires=" + buf + CookieFlags;
+    return "jwt=" + value + "; Expires=" + buf + CookieFlags;
 }
 
 #endif

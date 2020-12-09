@@ -17,6 +17,7 @@
 #include "FieldsAlloc.h"
 #include "MimeType.h"
 #include "Router.h"
+#include <stack>
 
 using alloc_t = fields_alloc<char>;
 using request_body_t = boost::beast::http::basic_dynamic_body<boost::beast::flat_static_buffer<Mbyte>>;
@@ -131,6 +132,8 @@ private:
 
     // The file-based response serializer.
     FileSerializerType FileSerializer;
+
+    std::stack<std::string> CookieStack;
 
     /**
      * Purpose: Accept socket connection
@@ -271,7 +274,7 @@ private:
         //Is empty() depricated? When is Target.empty() true?
         //if (Request.target().empty() || Request.target() != '/' || Target.find("..") != std::string::npos)
 
-        std::string& resource = Router_.Get(Request);
+        std::string& resource = Router_.Get(Request, CookieStack);
         if (resource.compare("-1")==0){
             SendBadFileResponse();
         }
@@ -317,7 +320,12 @@ private:
             FileResponse->keep_alive(false);
             FileResponse->set(boost::beast::http::field::server, "Beast");
             FileResponse->set(boost::beast::http::field::content_type, GetMimeType(FullPath));
-            FileResponse->set(boost::beast::http::field::set_cookie, MakeTestCookie("jwt", "hello"));
+            while(!CookieStack.empty()){
+                FileResponse->set(boost::beast::http::field::set_cookie, MakeTestCookie(CookieStack.top()));
+                CookieStack.pop();
+            }
+
+
             FileResponse->body() = std::move(File);
             FileResponse->prepare_payload();
 
