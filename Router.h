@@ -19,7 +19,8 @@ class Router {
         
         /**
          * Purpose: Process the Get request.  
-         * @param   Request HttpRequest
+         * @param   Request         HttpRequest
+         * @param   CookieStack     Stack
          * @returns URL     string
          */
         std::string& Get(const HttpRequest& Request, std::stack<std::string>& CookieStack);

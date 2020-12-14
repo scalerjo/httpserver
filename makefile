@@ -1,5 +1,5 @@
 TARGET = ./Example/ExampleServer.cpp
-CXXFLAGS = -O3 -Wall -Werror -pedantic-errors -fmessage-length=0 -lboost_thread -lpthread
+CXXFLAGS = -O3 -Wall -Werror -pedantic-errors -fmessage-length=0 -lpthread
 OUTPUT = Server
 
 main:
